@@ -30,7 +30,7 @@ print(xt, type="html")
 ```
 
 <!-- html table generated in R 3.1.2 by xtable 1.7-4 package -->
-<!-- Fri Feb 13 18:32:55 2015 -->
+<!-- Fri Feb 13 18:46:17 2015 -->
 <table border=1>
 <tr> <th>  </th> <th>     steps </th> <th>         date </th> <th>    interval </th>  </tr>
   <tr> <td align="right"> 1 </td> <td> Min.   :  0.00   </td> <td> 2012-10-01:  288   </td> <td> Min.   :   0.0   </td> </tr>
@@ -60,7 +60,7 @@ names(df)[2]<-paste("date")
 library(ggplot2)
 
 total_plot <- ggplot(df,aes(x=as.Date(df$date),y=df$total_num_steps_per_day)) 
-total_plot <- total_plot + geom_bar(stat ="identity") + theme(axis.text.x = element_text(angle = 90, hjust = 1,size=8)) 
+total_plot <- total_plot + geom_bar(stat ="identity") + theme(axis.text.x = element_text(angle = 90, hjust = 1,size=10)) 
 total_plot <- total_plot + labs(title="Total Number of Steps Per Day") + labs(x="Days") + labs(y="Total Number of Steps")
 
 total_plot
@@ -101,7 +101,7 @@ names(df)[1]<-paste("ave_num_steps_per_interval")
 names(df)[2]<-paste("interval")
 
 ave_plot <- ggplot(data=df,aes(x=interval,y=ave_num_steps_per_interval),group=1) + geom_line()
-ave_plot <- ave_plot + theme(axis.text.x = element_text(angle = 90, hjust = 1,size=8)) + geom_line()
+ave_plot <- ave_plot + theme(axis.text.x = element_text(angle = 90, hjust = 1,size=10)) + geom_line()
 ave_plot <- ave_plot + labs(title="Average Number of Steps Per 5-minute Interval") + labs(x="5-minute interval") + labs(y="Average Number of Steps")
 
 ave_plot
@@ -160,7 +160,7 @@ names(df)[2]<-paste("date")
 library(ggplot2)
 
 total_plot <- ggplot(df,aes(x=as.Date(df$date),y=df$total_num_steps_per_day)) 
-total_plot <- total_plot + geom_bar(stat ="identity") + theme(axis.text.x = element_text(angle = 90, hjust = 1,size=8)) 
+total_plot <- total_plot + geom_bar(stat ="identity") + theme(axis.text.x = element_text(angle = 90, hjust = 1,size=10)) 
 total_plot <- total_plot + labs(title="Total Number of Steps Per Day with Missing Values Filled In") + labs(x="Days") + labs(y="Total Number of Steps")
 
 total_plot
@@ -215,19 +215,12 @@ names(df)[2]<-paste("ave_num_steps_per_interval_weekday")
 names(df)[3]<-paste("interval")
 
 library(gridExtra)
-```
-
-```
-## Loading required package: grid
-```
-
-```r
 ave_plot_weekend <- ggplot(data=df,aes(x=interval,y=ave_num_steps_per_interval_weekend),group=1) + geom_line()
-ave_plot_weekend <- ave_plot_weekend + theme(axis.text.x = element_text(angle = 90, hjust = 1,size=6)) + geom_line() 
-ave_plot_weekend <- ave_plot_weekend + labs(title="Average # of Steps Per 5-min Interval Weekend") + labs(x="5-minute interval") + labs(y="Average Number of Steps") + theme(plot.title = element_text(size=10))
+ave_plot_weekend <- ave_plot_weekend + theme(axis.text.x = element_text(angle = 90, hjust = 1,size=10)) + geom_line() 
+ave_plot_weekend <- ave_plot_weekend + labs(title="Average # of Steps Per 5-min Interval Weekend") + labs(x="5-minute interval") + labs(y="Average Number of Steps") + theme(plot.title = element_text(size=9))
  
 ave_plot_weekday <- ggplot(data=df,aes(x=interval,y=ave_num_steps_per_interval_weekday),group=1) + geom_line()
-ave_plot_weekday <- ave_plot_weekday + theme(axis.text.x = element_text(angle = 90, hjust = 1,size=6)) + geom_line()
+ave_plot_weekday <- ave_plot_weekday + theme(axis.text.x = element_text(angle = 90, hjust = 1,size=9)) + geom_line()
 ave_plot_weekday <- ave_plot_weekday + labs(title="Average # of Steps Per 5-min Interval Weekday") + labs(x="5-minute interval") + labs(y="Average Number of Steps") + theme(plot.title = element_text(size=10))
  
 grid.arrange(ave_plot_weekday,ave_plot_weekend, ncol=2)
